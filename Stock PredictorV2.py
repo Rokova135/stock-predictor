@@ -35,7 +35,7 @@ class StockPredictorApp(QWidget):
         content_layout = QHBoxLayout(content_container)
 
         self.stock_selector = QComboBox()
-        self.stock_selector.addItems(["Tesla", "Apple"])
+        self.stock_selector.addItems(["Tesla", "Apple", "Amazon", "Alphabet"])
         self.stock_selector.setStyleSheet("font-size: 20px; color: white; background-color: #444444;")
         content_layout.addWidget(self.stock_selector)
 
@@ -63,7 +63,9 @@ class StockPredictorApp(QWidget):
     def update_predictions(self):
         stock_mapping = {
             "Tesla": ("TSLA", "tesla.keras"),
-            "Apple": ("AAPL", "apple.keras")
+            "Apple": ("AAPL", "apple.keras"),
+            "Amazon": ("AMZN", "amazon.keras"),
+            "Alphabet": ("GOOG", "alphabet.keras")
         }
         selected_stock = self.stock_selector.currentText()
         stock_ticker, model_filename = stock_mapping[selected_stock]
@@ -95,7 +97,7 @@ class StockPredictorApp(QWidget):
         ax.set_title(f"{selected_stock} - Last 90 Days", color='white', fontsize=16)
         ax.set_xlabel("Date", color='white', fontsize=12)
         ax.set_ylabel("Price (USD)", color='white', fontsize=12)
-        ax.legend(facecolor='black', edgecolor='white', fontsize=10, loc='upper left')
+        ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left')
         ax.grid(True, color='gray')
         plt.tight_layout()
 

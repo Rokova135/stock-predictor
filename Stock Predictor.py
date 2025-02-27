@@ -35,7 +35,7 @@ class StockPredictorApp(QWidget):
         content_layout = QHBoxLayout(content_container)
 
         self.stock_selector = QComboBox()
-        self.stock_selector.addItems(["Tesla", "Apple", "Amazon", "Alphabet"])
+        self.stock_selector.addItems(["Tesla", "Apple", "Amazon", "Alphabet", "Disney"])
         self.stock_selector.setStyleSheet("font-size: 20px; color: white; background-color: #444444;")
         content_layout.addWidget(self.stock_selector)
 
@@ -65,7 +65,8 @@ class StockPredictorApp(QWidget):
             "Tesla": ("TSLA", "tesla.keras"),
             "Apple": ("AAPL", "apple.keras"),
             "Amazon": ("AMZN", "amazon.keras"),
-            "Alphabet": ("GOOG", "alphabet.keras")
+            "Alphabet": ("GOOG", "alphabet.keras"),
+            "Disney": ("DIS", "disney.keras")
         }
         selected_stock = self.stock_selector.currentText()
         stock_ticker, model_filename = stock_mapping[selected_stock]
